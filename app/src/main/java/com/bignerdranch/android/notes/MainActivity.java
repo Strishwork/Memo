@@ -92,7 +92,6 @@ public class MainActivity extends AppCompatActivity implements MemoDialog.MemoDi
 
     void addNote(){
 
-        //MemoDialog dialog = new MemoDialog();
         MemoDialog dialog = MemoDialog.newInstance("", 0, false);
         dialog.show(getSupportFragmentManager(), "dialog");
 //        ContentValues cv = new ContentValues();
@@ -133,6 +132,7 @@ public class MainActivity extends AppCompatActivity implements MemoDialog.MemoDi
         if (cursor != null) {
             cursor.moveToFirst();
             text = cursor.getString(cursor.getColumnIndex(NoteContract.NoteEntry.COLUMN_NAME));
+            cursor.close();
         }
 
         dbHelper.close();
